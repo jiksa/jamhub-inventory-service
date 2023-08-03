@@ -18,5 +18,6 @@ public class JamInventoryDto {
     private OffsetDateTime createdDate;
     private OffsetDateTime lastModifiedDate;
     private UUID jamId;
+    private String upc;
     private Integer quantityOnHand;
 }

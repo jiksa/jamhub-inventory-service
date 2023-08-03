@@ -53,6 +53,10 @@ public class JamInventoryBootstrap implements CommandLineRunner {
                 .build());
 
         log.info("Loaded Inventory. Record count: " + jamInventoryRepository.count());
+        for(JamInventory item : jamInventoryRepository.findAll()){
+            log.info("Jam inventory uuid-"+item.getJamId());
+        }
+
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sage.springcoder.jamhub.inventory.service.domain.JamInventory;
 import sage.springcoder.jamhub.inventory.service.repositories.JamInventoryRepository;
 import sage.springcoder.jamhub.inventory.service.web.mappers.JamInventoryMapper;
 import sage.springcoder.jamhub.inventory.service.web.model.JamInventoryDto;
@@ -24,8 +25,9 @@ public class JamInventoryController {
    @GetMapping("api/v1/jam/{jamId}/inventory")
    List<JamInventoryDto> listJamsById(@PathVariable UUID jamId){
        log.debug("Finding Inventory for jamId:" + jamId);
+       List<JamInventory> list = jamInventoryRepository.findAllByJamId(jamId);
 
-       return jamInventoryRepository.findAllByJamId(jamId)
+       return list
                .stream()
                .map(jamInventoryMapper::jamInventoryToJamInventoryDto)
                .collect(Collectors.toList());
