@@ -42,14 +42,14 @@ public class JamInventoryBootstrap implements CommandLineRunner {
                 .builder()
                 .jamId(JAM_2_UUID)
                 .upc(JAM_2_UPC)
-                .quantityOnHand(50)
+                .quantityOnHand(90)
                 .build());
 
         jamInventoryRepository.saveAndFlush(JamInventory
                 .builder()
                 .jamId(JAM_3_UUID)
                 .upc(JAM_3_UPC)
-                .quantityOnHand(50)
+                .quantityOnHand(30)
                 .build());
 
         log.info("Loaded Inventory. Record count: " + jamInventoryRepository.count());
